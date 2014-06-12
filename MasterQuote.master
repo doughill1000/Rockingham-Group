@@ -1,0 +1,92 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterQuote.master.cs"
+    Inherits="MasterQuote" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>CIS484</title>
+    <link type="text/css" href="Styles\StyleSheet.css" rel="Stylesheet" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div id="wrapper">
+        <div id="login">
+            <asp:LoginView ID="LoginView1" runat="server">
+                <AnonymousTemplate>
+                    <a href="~/Wepages/Authentication/Login.aspx" id="HeadLoginStatus" runat="server">Log
+                        In</a>
+                </AnonymousTemplate>
+                <LoggedInTemplate>
+                    Welcome
+                    <asp:LoginName ID="LoginName1" runat="server" />
+                    !
+                    <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out"
+                        LogoutPageUrl="~/Wepages/Authentication/Login.aspx" />
+                </LoggedInTemplate>
+                <RoleGroups>
+                    <asp:RoleGroup Roles="admin">
+                        <ContentTemplate>
+                            Admin
+                            <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutPageUrl="~/Wepages/Authentication/Login.aspx"
+                                LogoutText="Log Out" />
+                        </ContentTemplate>
+                    </asp:RoleGroup>
+                </RoleGroups>
+            </asp:LoginView>
+        </div>
+        <div id="banner">
+        <h1 id="header">
+            <asp:HyperLink Width="500px" Height="42px" ID="logo" runat="server" ImageUrl="~/Images/logo.png"
+                NavigateUrl="~/Wepages/Home.aspx" CssClass="logo"></asp:HyperLink>
+        </h1>
+        </div>
+        <div id = "reference">
+            <asp:Label ID = "lblReference" runat = "server" CssClass = "referenceNumber"></asp:Label>
+        </div>
+        <div id="content">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <div id="sidepane">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                <div class="help" style="color: #FFFFFF; padding:15px;">
+                    Our customers are often our neighbors and friends. So you can be sure we will take good care of you and your family.
+                </div>
+                <div class="help" style="color: #FFFFFF; padding:15px;">
+                    Over 98% of Rockingham customers say they are very satisfied with the service and insurance settlement they receive. Contact an agent near you to learn more.
+                </div>
+                <div class="help" style="color: #FFFFFF; padding:15px;">
+                    Real relationships are caring, honest, and lasting. Maybe that's why Rockingham has been in business for over 140 years.
+                </div>
+                <div class="help" style="color: #FFFFFF; padding:15px;">
+                    Concerned about your insurance rates? For a complete auto insurance check-up, contact the Rockingham agent near you.
+                </div>
+            </asp:ContentPlaceHolder>
+        </div>
+        <div id="footer">
+            All Rights Reserved.
+        </div>
+    </div>
+    </form>
+    <script type="text/javascript">
+        (function () {
+
+            var quotes = $(".help");
+            var quoteIndex = -1;
+
+            function showNextQuote() {
+                ++quoteIndex;
+                quotes.eq(quoteIndex % quotes.length)
+            .fadeIn(2000)
+            .delay(7000)
+            .fadeOut(2000, showNextQuote);
+            }
+
+            showNextQuote();
+
+        })();
+    </script>
+</body>
+</html>

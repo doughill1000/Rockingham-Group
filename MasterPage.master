@@ -1,0 +1,193 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>The Rockingham Group</title>
+    <link type="text/css" href="Styles\StyleSheet.css" rel="Stylesheet" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!--<style type="text/css">
+        .logo
+        {}
+        #header
+        {
+            height: 126px;
+        }
+    </style>-->
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div id="wrapper">
+        <div id="login">
+            <asp:LoginView ID="LoginView1" runat="server">
+                <AnonymousTemplate>
+                    <a href="~/Wepages/Authentication/Login.aspx" id="HeadLoginStatus" runat="server"><span
+                        style="font-family: Arial">Log In</span></a>
+                </AnonymousTemplate>
+                <LoggedInTemplate>
+                    Welcome
+                    <asp:LoginName ID="LoginName1" runat="server" />
+                    !
+                    <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out"
+                        LogoutPageUrl="~/Wepages/Authentication/Login.aspx" EnableTheming="true" />
+                </LoggedInTemplate>
+                <RoleGroups>
+                    <asp:RoleGroup Roles="admin">
+                        <ContentTemplate>
+                            Admin
+                            <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutPageUrl="~/Wepages/Authentication/Login.aspx"
+                                LogoutText="Log Out" />
+                        </ContentTemplate>
+                    </asp:RoleGroup>
+                </RoleGroups>
+            </asp:LoginView>
+            &nbsp
+            <asp:HyperLink ID="hylFacebook" runat="server" ImageUrl="~/Images/facebook-icon.png"
+                CssClass="socialMedia" NavigateUrl="https://www.facebook.com/rockinghamgroup"></asp:HyperLink>
+            <asp:HyperLink ID="hylTwitter" runat="server" ImageUrl="~/Images/twitter-icon.png"
+                CssClass="socialMedia" NavigateUrl="https://twitter.com/rockinghamgroup"></asp:HyperLink>
+            <asp:HyperLink ID="hylLinkedin" runat="server" ImageUrl="~/Images/linkedin-icon.png"
+                CssClass="socialMedia" NavigateUrl="http://www.linkedin.com/company/the-rockingham-group"></asp:HyperLink>
+        </div>
+        <div id="banner">
+            <h1 id="header">
+                <asp:HyperLink Width="500px" Height="42px" ID="logo" runat="server" ImageUrl="~/Images/logo.png"
+                    NavigateUrl="~/Wepages/Home.aspx" CssClass="logo"></asp:HyperLink>
+            </h1>
+        </div>
+        <div id="searchbar">
+            <asp:TextBox ID="txtSearchBar" ToolTip="Enter a reference number, insurance type, or name"
+                runat="server" Style="text-align: right" />
+            <asp:Button ID="btnSearch" runat="server" Text="Search" Style="text-align: right"
+                OnClick="btnSearch_Click" />
+        </div>
+        <div id="menu">
+            <asp:LoginView ID="lgvMenu" runat="server">
+                <AnonymousTemplate>
+                    <asp:Menu ID="MainMenu" runat="server" Orientation="Horizontal" StaticMenuItemStyle-HorizontalPadding="20px">
+                        <Items>
+                            <asp:MenuItem NavigateUrl="~/Wepages/Home.aspx" Text="Home" Value="1"></asp:MenuItem>
+                            <asp:MenuItem Text="About Us" Value="2" NavigateUrl="~/Wepages/About.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Quotes" Value="3" NavigateUrl="~/Wepages/Quote/Quotes.aspx">
+                            </asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Wepages/Contact.aspx" Text="Contact Us" Value="4"></asp:MenuItem>
+                        </Items>
+                    </asp:Menu>
+                </AnonymousTemplate>
+                <LoggedInTemplate>
+                    <asp:Menu ID="MainMenu" runat="server" Orientation="Horizontal" StaticMenuItemStyle-HorizontalPadding="20px">
+                        <Items>
+                            <asp:MenuItem NavigateUrl="~/Wepages/Home.aspx" Text="Home" Value="1"></asp:MenuItem>
+                            <asp:MenuItem Text="About Us" Value="2" NavigateUrl="~/Wepages/About.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Quotes" Value="3" NavigateUrl="~/Wepages/Quote/Quotes.aspx">
+                            </asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Wepages/Contact.aspx" Text="Contact Us" Value="4"></asp:MenuItem>
+                            <asp:MenuItem Text="Change Password" Value="5" NavigateUrl="~/Wepages/Authentication/Password/ChangePassword.aspx" />
+                        </Items>
+                    </asp:Menu>
+                </LoggedInTemplate>
+                <RoleGroups>
+                    <asp:RoleGroup Roles="manager">
+                        <ContentTemplate>
+                            <asp:Menu ID="MainMenu" runat="server" Orientation="Horizontal" StaticMenuItemStyle-HorizontalPadding="20px">
+                                <Items>
+                                    <asp:MenuItem NavigateUrl="~/Wepages/Home.aspx" Text="Home" Value="1"></asp:MenuItem>
+                                    <asp:MenuItem Text="About Us" Value="2" NavigateUrl="~/Wepages/About.aspx"></asp:MenuItem>
+                                    <asp:MenuItem Text="Quotes" Value="3" NavigateUrl="~/Wepages/Quote/ViewQuotesManager.aspx">
+                                    </asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/Wepages/Contact.aspx" Text="Contact Us" Value="4"></asp:MenuItem>
+                                    <asp:MenuItem Text="Change Password" Value="5" NavigateUrl="~/Wepages/Authentication/Password/ChangePassword.aspx" />
+                                    <asp:MenuItem Text="Drill Down" Value="6" NavigateUrl="~/Wepages/Manager/DrillDown.aspx" />
+                                </Items>
+                            </asp:Menu>
+                        </ContentTemplate>
+                    </asp:RoleGroup>
+                    <asp:RoleGroup Roles="agent">
+                        <ContentTemplate>
+                            <asp:Menu ID="MainMenu" runat="server" Orientation="Horizontal" StaticMenuItemStyle-HorizontalPadding="20px">
+                                <Items>
+                                    <asp:MenuItem NavigateUrl="~/Wepages/Home.aspx" Text="Home" Value="1"></asp:MenuItem>
+                                    <asp:MenuItem Text="About Us" Value="2" NavigateUrl="~/Wepages/About.aspx"></asp:MenuItem>
+                                    <asp:MenuItem Text="Quotes" Value="3" NavigateUrl="~/Wepages/Quote/ViewQuotesAgent.aspx">
+                                    </asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/Wepages/Contact.aspx" Text="Contact Us" Value="4"></asp:MenuItem>
+                                    <asp:MenuItem Text="Change Password" Value="5" NavigateUrl="~/Wepages/Authentication/Password/ChangePassword.aspx" />
+                                    <asp:MenuItem Text="Agency Information" Value="6" NavigateUrl="~/Wepages/Agent/AgencyInfo.aspx">
+                                    </asp:MenuItem>
+                                </Items>
+                            </asp:Menu>
+                        </ContentTemplate>
+                    </asp:RoleGroup>
+                    <asp:RoleGroup Roles="agency_manager">
+                        <ContentTemplate>
+                            <asp:Menu ID="MainMenu" runat="server" Orientation="Horizontal" StaticMenuItemStyle-HorizontalPadding="20px">
+                                <Items>
+                                    <asp:MenuItem NavigateUrl="~/Wepages/Home.aspx" Text="Home" Value="1"></asp:MenuItem>
+                                    <asp:MenuItem Text="About Us" Value="2" NavigateUrl="~/Wepages/About.aspx"></asp:MenuItem>
+                                    <asp:MenuItem Text="Quotes" Value="3" NavigateUrl="~/Wepages/Quote/ViewQuotesAgentManager.aspx">
+                                    </asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/Wepages/Contact.aspx" Text="Contact Us" Value="4"></asp:MenuItem>
+                                    <asp:MenuItem Text="Change Password" Value="5" NavigateUrl="~/Wepages/Authentication/Password/ChangePassword.aspx" />
+                                    <asp:MenuItem Text="Agency Information" Value="6" NavigateUrl="~/Wepages/Agent/AgencyInfo.aspx">
+                                    </asp:MenuItem>
+                                </Items>
+                            </asp:Menu>
+                        </ContentTemplate>
+                    </asp:RoleGroup>
+                </RoleGroups>
+            </asp:LoginView>
+        </div>
+        <div id="content">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <div id="sidepane">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                <div class="twitterFeed">
+                    <div id="fb-root">
+                    </div>
+                    <script>                        (function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (d.getElementById(id)) return;
+                            js = d.createElement(s); js.id = id;
+                            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                            fjs.parentNode.insertBefore(js, fjs);
+                        } (document, 'script', 'facebook-jssdk'));</script>
+                    <div class="fb-like" data-href="https://www.facebook.com/Rock1ingham.Group?ref=hl"
+                        data-layout="button_count" data-action="like" data-show-faces="true" data-share="true">
+                    </div>
+                    <div>
+                    <br />
+                    </div>
+                    <a class="twitter-timeline" href="https://twitter.com/search?q=%23Rock1nghamGroup"
+                        data-widget-id="457992531540582400">Tweets about "#Rock1nghamGroup"</a>
+                    <script>                        !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } } (document, "script", "twitter-wjs");</script>
+                </div>
+            </asp:ContentPlaceHolder>
+        </div>
+        <div id="footer">
+            All Rights Reserved.
+        </div>
+    </div>
+    </form>
+    <script>
+        (function () {
+
+            var quotes = $(".help");
+            var quoteIndex = -1;
+
+            function showNextQuote() {
+                ++quoteIndex;
+                quotes.eq(quoteIndex % quotes.length)
+            .fadeIn(2000)
+            .delay(7000)
+            .fadeOut(2000, showNextQuote);
+            }
+
+            showNextQuote();
+
+        })();
+    </script>
+</body>
+</html>

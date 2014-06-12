@@ -1,0 +1,11 @@
+4/24/14 10:20 AM
+	DB: Removed triggers, altered searchResultsManager stored procedure to only show quotes that were not requested for reactivation
+	Basic updates to web pages
+
+
+4/23/14 11:16 AM
+
+	Added "Edit" hyperlinks to all gridviews
+	DB: Added "Submitted" field to quote
+	For Gridviews, ViewQuotes.aspx has functionality to show submitted quotes properly. 		The rest(view/ search quotes pages) need it.
+	

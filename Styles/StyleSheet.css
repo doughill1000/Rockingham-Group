@@ -1,0 +1,287 @@
+﻿html,body
+{
+    font-family: Calibri;
+    background-image:url('../Images/Background.jpg');
+    background-repeat:no-repeat;
+    background-size:cover;
+} 
+body p
+{
+    font-size: 1em;
+    line-height: 1.28;
+}
+.labels
+{
+    font-family: @Batang;
+}
+header {
+  text-align: center;
+  position: relative;
+  background: url(../images/slide_show_pictures.jpg) 0 bottom repeat-x;
+  background-size: 400%;
+  padding-bottom: 32.5%;
+  -webkit-animation: h_slide 24s ease-out infinite;
+  -moz-animation: h_slide 24s ease-out infinite;
+  animation: h_slide 24s ease-out infinite; 
+  }
+@keyframes h_slide {
+  0% {
+    background-position: 0% bottom; }
+  20% {
+    background-position: 0% bottom; }
+  25% {
+    background-position: 33.33333% bottom; }
+  45% {
+    background-position: 33.33333% bottom; }
+  50% {
+    background-position: 66.66667% bottom; }
+  70% {
+    background-position: 66.66667% bottom; }
+  75% {
+    background-position: 100% bottom; }
+  95% {
+    background-position: 100% bottom; }
+  100% {
+    background-position: 133.33% bottom; } 
+    }
+.help
+{
+    display: none;
+    color: #ffffff;
+    font-size:large;
+}
+#login
+{   text-align: right;
+    height: 4px;
+    margin-right:5px;
+}
+#menu
+{
+    border: 1px solid Black;
+    background-color:#6495ED;
+    height: 27px;
+    font-size:larger;
+    font-weight:bold;
+    font-style:italic;
+    text-shadow: 0.1em 0.1em #333;
+    color:White;
+    margin-right: 5px;
+}
+
+#menu a:link, #menu a:active, #menu a:visited
+{
+    display: block;
+    color: white;
+    text-decoration: none;
+}
+
+ 
+#menu a:hover
+{
+    color: lightblue;
+}
+
+.failureNotification
+{
+    color:Red
+}
+
+.success
+{
+    color:Green
+}
+
+#banner
+{
+    height: 139px;
+    width: 1241px;
+}
+#content
+{
+    float: left;
+    width: 77%;
+    padding: 10px;
+}
+#sidepane
+{
+    margin: 5px;
+    float:right;
+    width:20%; 
+    background-color:#6495ED; 
+    border: 1px solid Black;
+    height:1000px;
+    border-radius: 10px;
+}
+#footer
+{
+    border: 1px solid Black;
+    clear: both;
+    height: auto;
+    padding: 5px;
+    text-align: center;
+    color: #fff;
+    text-shadow: 0.1em 0.1em #333;
+    background-color:#6495ED;
+    margin-right: 5px;
+}
+.fieldset
+{
+    border-width:medium;
+    line-height:25px;
+}
+
+.div
+{
+    margin-left: 15px; 
+    line-height: 25px;
+}
+
+#searchbar
+{
+    text-align:right; 
+    margin-right:5px;
+}
+
+.socialMedia
+{
+    margin-right:5px;
+    margin-bottom:-10px;
+    border:none;
+    border-width:0px;
+}
+
+.ul
+{
+    list-style-type: none;
+    padding:0px;
+    margin:0px;
+}
+.ul li
+{
+    margin-left:15px;
+}
+.table
+{
+ border: thin solid black;
+ border-spacing: 10px;
+ text-align:left;
+ border-collapse: collapse;
+ width: 750px;
+}
+
+.table tr
+{
+ border-bottom: thin solid black;   
+}
+
+.table th
+{
+    text-align:left;
+}
+
+#wrapper {
+    width: 1250px;
+    margin: 0 auto;
+}
+
+#YearMakeModel
+{
+    visibility: hidden;
+}
+
+#reference
+{
+    border: 1px solid Black;
+    background-color:#6495ED;
+    height: 27px;
+    color:White;
+    margin-right: 5px;
+    text-align:right;
+}
+.referenceNumber
+{
+    margin-right:10px;
+    font-weight:bold;
+    font-style:italic;
+}
+.required
+{
+    color:#ff0000;   
+}
+.stepComplete
+{
+    border:2px solid black; 
+    padding:15px; 
+    color:#ffffff; 
+    text-align:center; 
+    height:40px; 
+    padding-top:22px; 
+    background-color: #ffa600;
+}
+.stepIncomplete
+{
+    border:2px solid black; 
+    padding:15px; 
+    color:#ffffff; 
+    text-align:center; 
+    height:40px; 
+    padding-top:22px; 
+    background-color:#004562;
+}
+#viewQuotes
+{
+
+}
+.logo img
+{
+    border:none;
+    outline:none;
+}
+#fsSum
+{
+    border:none;
+    outline:none;   
+}
+h2
+{
+    color:#6495ED;
+}
+
+.twitterFeed
+{
+    padding:15px;   
+}
+/**********************GRIDVIEW******************************/
+    .mGrid {   
+        width: 100%;   
+        background-color: #fff;   
+        margin: 5px 0 10px 0;   
+        border: solid 1px #525252;   
+        border-collapse:collapse;   
+    }  
+    .mGrid td {   
+        padding: 2px;   
+        border: solid 1px #c1c1c1;   
+        color: #717171;   
+        text-align:center;
+    }  
+    .mGrid th {   
+        padding: 4px 2px;   
+        color: #fff;   
+        background: #6495ED url(grd_head.png) repeat-x top;   
+        border-left: solid 1px #525252;   
+        font-size: 0.9em;   
+    }  
+    .mGrid .alt { background: #fcfcfc url(grd_alt.png) repeat-x top; }  
+    .mGrid .pgr { background: #424242 url(grd_pgr.png) repeat-x top; }  
+    .mGrid .pgr table { margin: 5px 0; }  
+    .mGrid .pgr td {   
+        border-width: 0;   
+        padding: 0 6px;   
+        border-left: solid 1px #666;   
+        font-weight: bold;   
+        color: #fff;   
+        line-height: 12px;   
+     }     
+    .mGrid .pgr a { color: #666; text-decoration: none; }  
+    .mGrid .pgr a:hover { color: #000; text-decoration: none; }  
